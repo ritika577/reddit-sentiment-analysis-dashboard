@@ -1,0 +1,36 @@
+name: ⏰ Daily Reddit Sentiment Data Update
+
+on:
+  schedule:
+    - cron: '0 9 * * *'  # 9 AM UTC daily
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v3
+
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: 📦 Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: 🚀 Run Reddit sentiment fetcher
+        env:
+          user: ${{ secrets.DB_USER }}
+          password: ${{ secrets.DB_PASSWORD }}
+          host: ${{ secrets.DB_HOST }}
+          port: ${{ secrets.DB_PORT }}
+          dbname: ${{ secrets.DB_NAME }}
+          client_id: ${{ secrets.REDDIT_CLIENT_ID }}
+          user_agent: ${{ secrets.REDDIT_USER_AGENT }}
+        run: |
+          python reddit_sentiment.py
