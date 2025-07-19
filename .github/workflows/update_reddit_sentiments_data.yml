@@ -33,4 +33,4 @@ jobs:
           client_id: ${{ secrets.REDDIT_CLIENT_ID }}
           user_agent: ${{ secrets.REDDIT_USER_AGENT }}
         run: |
-          python reddit_sentiment.py
+          python reddit-scraper.py
