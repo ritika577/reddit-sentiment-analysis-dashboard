@@ -25,12 +25,13 @@ jobs:
 
       - name: 🚀 Run Reddit sentiment fetcher
         env:
-          user: ${{ secrets.DB_USER }}
-          password: ${{ secrets.DB_PASSWORD }}
-          host: ${{ secrets.DB_HOST }}
-          port: ${{ secrets.DB_PORT }}
-          dbname: ${{ secrets.DB_NAME }}
-          client_id: ${{ secrets.REDDIT_CLIENT_ID }}
-          user_agent: ${{ secrets.REDDIT_USER_AGENT }}
+          USER: ${{ secrets.USER }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+          HOST: ${{ secrets.HOST }}
+          PORT: ${{ secrets.PORT }}
+          DBNAME: ${{ secrets.DBNAME }}
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_ID }}
+          USER_AGENT: ${{ secrets.USER_AGENT }}
         run: |
           python reddit-scraper.py
