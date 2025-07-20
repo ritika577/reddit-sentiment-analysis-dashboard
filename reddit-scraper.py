@@ -29,7 +29,7 @@ for post in subreddit.hot(limit=200):
     post_sent = get_sentiment(post.title + " " + post.selftext)
     # print(post_sent)
 
-    for comment in post.comments[:5]:
+    for comment in post.comments[:50]:
         comment_sent = get_sentiment(comment.body)
         data.append({
             'post_title': post.title,
