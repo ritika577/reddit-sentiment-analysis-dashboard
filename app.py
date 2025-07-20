@@ -26,8 +26,6 @@ ORDER BY created_at DESC
 """
 df = run_query(query)
 
-
-st.write("Showing sample data:")
 # Fill numeric columns with 0
 df[df.select_dtypes(include='number').columns] = df.select_dtypes(include='number').fillna(0)
 
