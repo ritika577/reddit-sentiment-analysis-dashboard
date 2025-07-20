@@ -31,7 +31,7 @@ jobs:
           PORT: ${{ secrets.PORT }}
           DBNAME: ${{ secrets.DBNAME }}
           CLIENT_ID: ${{ secrets.CLIENT_ID }}
-          CLIENT_SECRET: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
           USER_AGENT: ${{ secrets.USER_AGENT }}
         run: |
           python reddit-scraper.py
