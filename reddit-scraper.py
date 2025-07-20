@@ -6,7 +6,7 @@ import os
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 analyzer = SentimentIntensityAnalyzer()
 # Load environment variables from .env
-load_dotenv()
+# load_dotenv()
 conn=get_db_connection()
 
 def get_sentiment(text):
