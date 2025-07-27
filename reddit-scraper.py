@@ -24,7 +24,7 @@ subreddit = reddit.subreddit("india")
 
 data = []
 
-for post in subreddit.hot(limit=20):
+for post in subreddit.hot(limit=200):
     post.comments.replace_more(limit=0)
     post_sent = get_sentiment(post.title + " " + post.selftext)
     # print(post_sent)
