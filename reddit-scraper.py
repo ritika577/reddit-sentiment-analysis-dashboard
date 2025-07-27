@@ -1,7 +1,7 @@
 from db_connection import get_db_connection
 import praw
 from psycopg2.extras import execute_batch
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 import os
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 analyzer = SentimentIntensityAnalyzer()
@@ -24,7 +24,7 @@ subreddit = reddit.subreddit("india")
 
 data = []
 
-for post in subreddit.hot(limit=200):
+for post in subreddit.hot(limit=20):
     post.comments.replace_more(limit=0)
     post_sent = get_sentiment(post.title + " " + post.selftext)
     # print(post_sent)
@@ -62,7 +62,7 @@ if conn:
             %(post_pos_sent)s, %(post_neg_sent)s, %(post_neu_sent)s,
             %(comment_pos_sent)s, %(comment_neg_sent)s, %(comment_neu_sent)s,
             CURRENT_TIMESTAMP, CURRENT_TIMESTAMP
-        );
+        ) ON CONFLICT (post_title, comment) DO NOTHING;
     """
 
     try:
